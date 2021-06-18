@@ -2,6 +2,8 @@ import React from 'react';
 import AppLoading from 'expo-app-loading'
 import { ThemeProvider } from 'styled-components'
 
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
 import {
   useFonts,
   Poppins_400Regular,
@@ -26,9 +28,11 @@ export default function App() {
   }
 
   return (
-  <ThemeProvider theme={theme}>
-    <Dashboard />
-  </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider theme={theme}>
+        <Dashboard />
+      </ThemeProvider>
+    </SafeAreaProvider>
   )
 }
 
