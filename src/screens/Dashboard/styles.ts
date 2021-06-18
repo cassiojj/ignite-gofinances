@@ -7,12 +7,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { DataListProps } from '.';
 
-export const Container = styled.View`
+export const Container = styled(SafeAreaView)`
     flex: 1;
     background-color: ${({ theme }) => theme.colors.background};
 `;
 
-export const Header = styled(SafeAreaView)`
+export const Header = styled.View`
   width: 100%;
   height: ${RFPercentage(42)}px;
   background-color: ${({ theme }) => theme.colors.primary};
