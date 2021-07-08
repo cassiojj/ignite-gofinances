@@ -1,6 +1,6 @@
-import React from 'react';
-import AppLoading from 'expo-app-loading'
-import { ThemeProvider } from 'styled-components'
+import React from "react";
+import AppLoading from "expo-app-loading";
+import { ThemeProvider } from "styled-components";
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
@@ -8,31 +8,29 @@ import {
   useFonts,
   Poppins_400Regular,
   Poppins_500Medium,
-  Poppins_700Bold
-} from '@expo-google-fonts/poppins'
+  Poppins_700Bold,
+} from "@expo-google-fonts/poppins";
 
-import theme from './src/global/styles/theme'
+import theme from "./src/global/styles/theme";
 
-import { Dashboard } from './src/screens/Dashboard';
-
+import { Register } from "./src/screens/Register";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_500Medium,
-    Poppins_700Bold
+    Poppins_700Bold,
   });
 
-  if(!fontsLoaded){
-    return <AppLoading />
+  if (!fontsLoaded) {
+    return <AppLoading />;
   }
 
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <Dashboard />
+        <Register />
       </ThemeProvider>
     </SafeAreaProvider>
-  )
+  );
 }
-
