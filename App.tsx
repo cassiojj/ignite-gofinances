@@ -2,6 +2,7 @@ import React from "react";
 import "react-native-gesture-handler";
 import "intl";
 import "intl/locale-data/jsonp/pt-BR";
+import { StatusBar } from 'react-native'
 
 import AppLoading from "expo-app-loading";
 
@@ -34,12 +35,13 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider>
+    // <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
+          <StatusBar barStyle="light-content" />
           <AppRoutes />
         </NavigationContainer>
       </ThemeProvider>
-    </SafeAreaProvider>
+    // </SafeAreaProvider>
   );
 }
