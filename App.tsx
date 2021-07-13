@@ -8,7 +8,7 @@ import AppLoading from "expo-app-loading";
 
 import { ThemeProvider } from "styled-components";
 
-import { NavigationContainer } from "@react-navigation/native";
+import { Routes } from './src/routes'
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
@@ -22,6 +22,9 @@ import {
 import theme from "./src/global/styles/theme";
 
 import { AppRoutes } from "./src/routes/app.routes";
+import { SignIn } from './src/screens/SignIn'
+
+import { AuthProvider, useAuth } from './src/hooks/auth'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -30,17 +33,19 @@ export default function App() {
     Poppins_700Bold,
   });
 
-  if (!fontsLoaded) {
+  const { userStorageLoadind } = useAuth();
+
+  if (!fontsLoaded || userStorageLoadind) {
     return <AppLoading />;
   }
 
   return (
     // <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
           <StatusBar barStyle="light-content" />
-          <AppRoutes />
-        </NavigationContainer>
+          <AuthProvider>
+            <Routes />
+          </AuthProvider>
       </ThemeProvider>
     // </SafeAreaProvider>
   );
